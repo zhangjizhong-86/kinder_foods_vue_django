@@ -2,31 +2,34 @@
   <!-- <div v-for="(value, name, index) in object">
     {{ index }}. {{ name }}: {{ value }}
   </div> -->
-  <div class="table-responsive">
-    <!-- <p> {{ week }} </p><br />
-    <table class="table table-bordered">  
-      <tr><th>日期</th><th>早点</th><th>午餐</th><th>午点</th><th>体弱儿营养菜</th></tr>
-      <tr v-for = "(row, date) in daily_menu" v-bind:key = "date" v-bind:class = "{'table-active' : date == query_date}">
-        <td>{{ date }}</td>
-        <td><span v-for = "(dish, id) in row.早点" v-bind:key = "id">{{ dish }}<br/></span></td>
-        <td><span v-for = "(dish, id) in row.午餐" v-bind:key = "id">{{ dish }}<br/></span></td>
-        <td><span v-for = "(dish, id) in row.午点" v-bind:key = "id">{{ dish }}<br/></span></td>
-        <td><span v-for = "(dish, id) in row.体弱儿营养菜" v-bind:key = "id">{{ dish }}<br/></span></td>
-      </tr>
-    </table> -->
-    <b-table responsive bordered :items="daily_menu">
-      <template slot="日期" slot-scope="data">
-        {{ data.value.date }}<br/>{{ data.value.weekday }}
-      </template>
-      <span slot="早点" slot-scope="data" v-html="data.value"></span>
-      <span slot="午餐" slot-scope="data" v-html="data.value"></span>
-      <span slot="午点" slot-scope="data" v-html="data.value"></span>
-      <span slot="体弱儿营养菜" slot-scope="data" v-html="data.value"></span>
-    </b-table>
+  <div>
+    <!-- <p> {{ week }} </p> -->
+    <div class="table-responsive">
+      <!-- 
+      <table class="table table-bordered">  
+        <tr><th>日期</th><th>早点</th><th>午餐</th><th>午点</th><th>体弱儿营养菜</th></tr>
+        <tr v-for = "(row, date) in daily_menu" v-bind:key = "date" v-bind:class = "{'table-active' : date == query_date}">
+          <td>{{ date }}</td>
+          <td><span v-for = "(dish, id) in row.早点" v-bind:key = "id">{{ dish }}<br/></span></td>
+          <td><span v-for = "(dish, id) in row.午餐" v-bind:key = "id">{{ dish }}<br/></span></td>
+          <td><span v-for = "(dish, id) in row.午点" v-bind:key = "id">{{ dish }}<br/></span></td>
+          <td><span v-for = "(dish, id) in row.体弱儿营养菜" v-bind:key = "id">{{ dish }}<br/></span></td>
+        </tr>
+      </table> -->
+      <b-table responsive bordered :items="daily_menu">
+        <template slot="日期" slot-scope="data">
+          {{ data.value.date }}<br/>{{ data.value.weekday }}
+        </template>
+        <span slot="早点" slot-scope="data" v-html="data.value"></span>
+        <span slot="午餐" slot-scope="data" v-html="data.value"></span>
+        <span slot="午点" slot-scope="data" v-html="data.value"></span>
+        <span slot="体弱儿营养菜" slot-scope="data" v-html="data.value"></span>
+      </b-table>
 
-    <!-- <b-table :items="items">
-      <span slot="html" slot-scope="data" v-html="data.value"></span>
-    </b-table> -->
+      <!-- <b-table :items="items">
+        <span slot="html" slot-scope="data" v-html="data.value"></span>
+      </b-table> -->
+    </div>
   </div>
 </template>
 

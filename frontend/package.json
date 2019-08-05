@@ -15,6 +15,7 @@
     "vue": "^2.6.10",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.7",
+    "vue2-flip-countdown": "^0.9.1",
     "vuejs-datepicker": "^1.5.4"
   },
   "devDependencies": {

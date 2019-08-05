@@ -1,6 +1,12 @@
 <template>
   <div>
-    <SelectDate v-on:selected = "get_menu"/> 
+    <b-container fluid class="my-3">
+      <SelectDate v-on:selected = "get_menu"/>
+    </b-container>
+    <b-alert v-model="failure" variant="danger" dismissible>
+      没有{{query_date}}的数据哦!
+    </b-alert>
+    <!-- <p variant="danger" v-if = "failure">没有{{query_date}}的数据哦</p> -->
     <MenuTable v-bind:menu = "menu" v-bind:query_date = "query_date"/>
   </div>
 </template>
@@ -15,7 +21,8 @@ export default {
   data() {
     return {
       menu: '',
-      query_date: ''
+      query_date: '',
+      failure: false // 控制错误信息
     }
   },
   // data: {
@@ -26,17 +33,6 @@ export default {
     SelectDate,
   },
   methods: {
-    today: function() {
-      // 生成今日日期字符串，格式：'yyyy-m-d'(eg: '2019-2-21')
-			let d = new Date();
-			let year = d.getFullYear();
-			let month = d.getMonth() + 1;
-			let day = d.getDate();
-			return year + '-' + month + '-' + day
-    },
-    getWeek: function() {
-      // 返回日期是星期几
-    },
     get_menu: function(query_date) {
       console.log("get_menu");
       let year = query_date.getFullYear();
@@ -45,11 +41,15 @@ export default {
       query_date = year + '-' + month + '-' + day;
       this.query_date = query_date;
       console.log(query_date);
-      this.$http.post('http://localhost:8888/ajax/',
+      this.$http.post('http://localhost:8880/ajax/',
                       {query_date: query_date}, 
                       {emulateJSON: true}) // 使用form-data才可以，否则querydict空
-      .then(function(response){
-        console.log(response.data);
+      .catch(function(error) { // 处理未得到数据的异常
+        console.log("in catch")
+        this.failure = true
+      }).then(function(response){ // 成功返回数据
+        console.log(response.status);
+          this.failure = false
         this.menu = response.data;
       });
     }
@@ -59,8 +59,7 @@ created: function() {
 },
 mounted: function() {
     console.log("MenuView mounted.");
-    // let today = this.today();
-    this.get_menu(new Date(2018,9,22));
+    this.get_menu(new Date());
 },
 destoryed: function() {
     console.log("MenuView destroyed.");

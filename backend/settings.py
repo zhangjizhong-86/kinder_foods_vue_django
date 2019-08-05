@@ -46,18 +46,45 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware', # 跨域访问
     'corsheaders.middleware.CorsMiddleware', # 跨域访问
     'django.middleware.common.CommonMiddleware', # 跨域访问
+    # 'corsheaders.middleware.CorsPostCsrfMiddleware', # 跨域访问
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
 # 跨域访问
+# CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = (
+#    '*'
+# )
+
+# CORS_ALLOW_METHODS = (
+# 'DELETE',
+# 'GET',
+# 'OPTIONS',
+# 'PATCH',
+# 'POST',
+# 'PUT',
+# 'VIEW',
+# )
+
+# CORS_ALLOW_HEADERS = (
+# 'XMLHttpRequest',
+# 'X_FILENAME',
+# 'accept-encoding',
+# 'authorization',
+# 'content-type',
+# 'dnt',
+# 'origin',
+# 'user-agent',
+# 'x-csrftoken',
+# 'x-requested-with',
+# 'Pragma',
+# )
 
 ROOT_URLCONF = 'backend.urls'
 

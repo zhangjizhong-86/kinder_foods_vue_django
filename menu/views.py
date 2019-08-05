@@ -18,7 +18,7 @@ def ajax(request):
         # 页面时区以浏览器自动调整
         query_date = request.POST.get('query_date', datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d'))
         query_week = Menu.objects.filter(date=query_date)[0].week # 查符合日期的第一条记录，TODO，处理ObjectDoesNotExist异常
-        query_week_menu = Menu.objects.filter(week=query_week).all()
+        query_week_menu = Menu.objects.filter(week=query_week).all().order_by('date')
 
         data = {}
         # week_menu_dict = {}
@@ -34,7 +34,8 @@ def ajax(request):
 
         # 数据结构：[{ 日期: '2019-7-1<br>星期一', 早点: '粥<br/>牛奶', 午餐: '饭<br/>汤', 午点: '饼干<br/>果汁', 体弱儿营养菜: '...' }, ... ]
         week_menu_list = []
-        daily_menu_dict = {'日期':'', '早点':[], '午餐':[], '午点':[], '体弱儿营养菜':[]}
+        # daily_menu_dict = {'日期':'', '早点':[], '午餐':[], '午点':[], '体弱儿营养菜':[]}
+        daily_menu_dict = {'日期':'', '早点':'', '午餐':'', '午点':'', '体弱儿营养菜':''}
         for row in query_week_menu:
             date = row.date.strftime('%Y-%m-%d').replace('-0','-')  #去除补零，和js中的query_date格式匹配
             date_with_weekday = {'date': date, 'weekday': row.date.strftime('%A')}
@@ -42,12 +43,13 @@ def ajax(request):
                 # 复制一个日级别的数据结构
                 week_menu_list.append(deepcopy(daily_menu_dict))
                 week_menu_list[-1]['日期'] = date_with_weekday
-            week_menu_list[-1][row.diet].append(row.food if len(row.comment)==0 else row.food + '（{}）'.format(row.comment))
+            # week_menu_list[-1][row.diet].append(row.food if len(row.comment)==0 else row.food + '（{}）'.format(row.comment))
+            week_menu_list[-1][row.diet] = row.food if len(row.comment)==0 else row.food + '（{}）'.format(row.comment)
         for daily_menu in week_menu_list:
-            daily_menu['早点'] = '<br/>'.join(daily_menu['早点'])
-            daily_menu['午餐'] = '<br/>'.join(daily_menu['午餐'])
-            daily_menu['午点'] = '<br/>'.join(daily_menu['午点'])
-            daily_menu['体弱儿营养菜'] = '<br/>'.join(daily_menu['体弱儿营养菜'])
+            # daily_menu['早点'] = '<br/>'.join(daily_menu['早点'])
+            # daily_menu['午餐'] = '<br/>'.join(daily_menu['午餐'])
+            # daily_menu['午点'] = '<br/>'.join(daily_menu['午点'])
+            # daily_menu['体弱儿营养菜'] = '<br/>'.join(daily_menu['体弱儿营养菜'])
             if daily_menu['日期']['date'] == query_date:
                 daily_menu['_rowVariant'] = 'success'
 

@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Menu(models.Model):
-	week = models.CharField(max_length=30,verbose_name=u"周")
+	week = models.CharField(max_length=30,verbose_name=u"周", primary_key=True)
 	date = models.DateField(verbose_name=u"日期")
 	diet = models.CharField(max_length=45,verbose_name=u"进食时间")
 	food = models.CharField(max_length=20,verbose_name=u"餐食")

@@ -2,11 +2,11 @@
   <div>
     <b-container>
       <b-row>
-        <b-col md="4"/>
-        <b-col md="4">
+        <b-col md="3"/>
+        <b-col md="6">
           <datepicker placeholder="选择日期" :language="languages[language]" :format="format"  v-on:selected = "sendEvent" wrapper-class="form-group" input-class="form-control"></datepicker>
         </b-col>
-        <b-col md="4"/>
+        <b-col md="3"/>
       </b-row>
     </b-container>
     <!-- <button v-on:click = "sendEvent">产生事件</button> -->
