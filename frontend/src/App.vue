@@ -2,9 +2,24 @@
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="success">
       <b-navbar-nav>
-        <b-nav-item><router-link to="/" class="text-white">幼儿园菜单</router-link></b-nav-item> 
-        <b-nav-item><router-link to="/chart" class="text-white">敬请期待</router-link></b-nav-item>
+        <b-row>
+          <b-col sm="3" md="2" xl="1">
+            <b-nav-item><router-link to="/" class="text-white">菜单</router-link></b-nav-item> 
+          </b-col>
+          <b-col sm="3" md="2" xl="2">
+            <b-nav-item><router-link to="/chart" class="text-white">敬请期待</router-link></b-nav-item>
+          </b-col>
+        </b-row>
       </b-navbar-nav>
+        <!-- <b-row>
+          <b-col sm="3" md="2" xl="1">
+            <router-link to="/" class="text-white">菜单</router-link>
+          </b-col>
+          <b-col sm="3" md="2" xl="1">
+            <router-link to="/chart" class="text-white">敬请期待</router-link>
+          </b-col>
+        </b-row> -->
+      <!-- </b-navbar-nav> -->
     </b-navbar>
     <keep-alive>
       <router-view/>
@@ -19,8 +34,6 @@
 </template>
 
 <script>
-import MenuView from '@/views/MenuView.vue'; 
-import ChartView from '@/views/ChartView.vue';
 export default {
   data() {
     return {
@@ -29,8 +42,7 @@ export default {
     }
   },
   components: {
-    MenuView, // local registration
-    ChartView
+
   },
 }
 
@@ -44,10 +56,6 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.navbar {
-  padding: 30px;
-  /* background-color: success; */
-}
 
 nav a.router-link-exact-active {
   font-weight: bold;
@@ -57,9 +65,10 @@ nav a.router-link-exact-active {
   height: 1px;
 }
 
-p {
-  font-size: '6px';
+.row, .navbar-nav {
+  width: 100%
 }
+
 </style>
 
 
