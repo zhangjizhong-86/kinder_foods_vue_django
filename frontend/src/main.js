@@ -14,6 +14,11 @@ Vue.use(VueResource)
 Vue.config.productionTip = false
 // Vue.component('selectDate', SelectDate) //global registration
 
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
+})
+
 new Vue({
   router,
   render: h => h(App)
