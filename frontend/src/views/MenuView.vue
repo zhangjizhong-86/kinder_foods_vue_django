@@ -46,10 +46,11 @@ export default {
                       {emulateJSON: true}) // 使用form-data才可以，否则querydict空
       .catch(function(error) { // 处理未得到数据的异常
         // console.log("in catch")
-        this.failure = true
+        this.failure = true;
+        return Promise.reject(error);
       }).then(function(response){ // 成功返回数据
-        // console.log(response.status);
-          this.failure = false
+        // console.log("in then");
+        this.failure = false;
         this.menu = response.data;
       });
     }
