@@ -7,7 +7,7 @@
             <b-nav-item><router-link to="/" class="text-white">菜单</router-link></b-nav-item> 
           </b-col>
           <b-col sm="3" md="2" xl="2">
-            <b-nav-item><router-link to="/chart" class="text-white">敬请期待</router-link></b-nav-item>
+            <b-nav-item><router-link to="/chart" class="text-white">毕业倒计时</router-link></b-nav-item>
           </b-col>
         </b-row>
       </b-navbar-nav>
@@ -26,9 +26,8 @@
     </keep-alive>
     <b-container fluid class="copyright my-3 bg-dark" />
     <b-container v-bind:style="{ fontSize: fontSize }">
-      <p class="mb-0" > oh-mykids.com v1.1 © 2018-20xx All rights reserved. </p>
-      <a href = "mailto: zhangjizhong@outlook.com">Contact Me</a> | 
-      <a href = "https://github.com/zhangjizhong-86">My Github</a>
+      <span class="mb-0" > oh-mykids.com v1.11 © 2018-2022 All rights reserved.</span>&nbsp;
+      <b-icon icon="star"></b-icon>&nbsp;<a href = "https://github.com/zhangjizhong-86/kinder_foods_vue_django">Github</a>
     </b-container>
   </div>
 </template>

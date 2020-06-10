@@ -1,7 +1,7 @@
 <template>
     <div>
-        <b-jumbotron lead="What will it be?" class="bg-white">
-            <flip-countdown deadline="2019-09-01 00:00:00"></flip-countdown>
+        <b-jumbotron lead="还有..." class="bg-white">
+            <flip-countdown deadline="2021-07-01 00:00:00"></flip-countdown>
         </b-jumbotron>
     </div>
 </template>

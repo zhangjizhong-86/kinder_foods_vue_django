@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource'
 import router from './router'
-import BootstrapVue from 'bootstrap-vue'
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 // import 'bootstrap'
@@ -10,6 +10,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // import SelectDate from '@/components/SelectDate.vue' //global import
 
 Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 Vue.use(VueResource)
 Vue.config.productionTip = false
 // Vue.component('selectDate', SelectDate) //global registration
